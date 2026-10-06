@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Road Damage Detection</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background: #f4f4f4;
+        }
+
+        /* NAVBAR */
+
+        nav {
+            width: 100%;
+            height: 70px;
+            background: #1e3a5f;
+            color: white;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            padding: 0 60px;
+        }
+
+        nav h1 {
+            font-size: 28px;
+        }
+
+        nav button {
+
+            padding: 10px 25px;
+            border: none;
+            background: #00b894;
+            color: white;
+            font-size: 17px;
+            border-radius: 6px;
+            cursor: pointer;
+
+        }
+
+        nav button:hover {
+
+            background: #00997a;
+
+        }
+
+        /* HOME PAGE */
+
+        #homePage {
+
+            width: 100%;
+            min-height: 100vh;
+
+        }
+
+        .hero {
+
+            width: 100%;
+            height: 500px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+
+            background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+
+            color: white;
+            text-align: center;
+
+        }
+
+        .hero h1 {
+
+            font-size: 55px;
+            margin-bottom: 20px;
+
+        }
+
+        .hero p {
+
+            width: 70%;
+            font-size: 20px;
+            line-height: 35px;
+
+        }
+
+        .hero button {
+
+            margin-top: 40px;
+            padding: 15px 40px;
+            font-size: 18px;
+
+            border: none;
+            background: #00b894;
+            color: white;
+
+            border-radius: 8px;
+
+            cursor: pointer;
+
+        }
+
+        .hero button:hover {
+
+            background: #00997a;
+
+        }
+
+        /* ABOUT */
+
+        .about {
+
+            width: 90%;
+            margin: 60px auto;
+
+        }
+
+        .about h2 {
+
+            color: #1e3a5f;
+            margin-bottom: 20px;
+
+        }
+
+        .about p {
+
+            font-size: 18px;
+            line-height: 35px;
+            text-align: justify;
+
+        }
+
+        /* CAUSES */
+
+        .causes {
+
+            width: 90%;
+            margin: 50px auto;
+
+        }
+
+        .causes h2 {
+
+            color: #1e3a5f;
+            margin-bottom: 20px;
+
+        }
+
+        .causes ul {
+
+            margin-left: 30px;
+            line-height: 40px;
+            font-size: 18px;
+
+        }
+
+        /* PREDICTION PAGE */
+
+        #predictionPage {
+
+            display: none;
+            min-height: 100vh;
+
+        }
+
+        .predictContainer {
+
+            width: 90%;
+            margin: 40px auto;
+
+        }
+
+        .uploadSection {
+
+            text-align: center;
+            margin-bottom: 40px;
+
+        }
+
+        .uploadSection input {
+
+            font-size: 18px;
+
+        }
+
+        /* Images */
+
+        .imageSection {
+
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+
+            flex-wrap: wrap;
+
+        }
+
+        .box {
+
+            width: 350px;
+            height: 350px;
+
+            border: 2px solid #444;
+            border-radius: 15px;
+
+            background: white;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            overflow: hidden;
+
+        }
+
+        .box img {
+
+            width: 100%;
+            height: 100%;
+
+            object-fit: contain;
+
+        }
+
+        .centerButtons {
+
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+
+        }
+
+        .centerButtons button {
+
+            padding: 12px 30px;
+
+            font-size: 17px;
+
+            border: none;
+
+            background: #1e3a5f;
+
+            color: white;
+
+            border-radius: 8px;
+
+            cursor: pointer;
+
+        }
+
+        .centerButtons button:hover {
+
+            background: #16304d;
+
+        }
+
+        .backBtn {
+
+            margin-bottom: 30px;
+
+        }
+
+        .backBtn button {
+
+            padding: 10px 25px;
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HOME PAGE -->
+
+    <div id="homePage">
+
+        <nav>
+
+            <h1>Road Damage Detection</h1>
+
+            <button onclick="openPrediction()">
+                Predict
+            </button>
+
+        </nav>
+
+        <section class="hero">
+
+            <h1>Road Damage Detection using YOLOv8</h1>
+
+            <p>
+
+                Detect potholes, cracks, and road damage automatically using Artificial
+                Intelligence. This system helps road authorities identify damaged roads
+                quickly and improve road safety.
+
+            </p>
+
+            <button onclick="openPrediction()">
+                Start Prediction
+            </button>
+
+        </section>
+
+        <section class="about">
+
+            <h2>About Road Damage</h2>
+
+            <p>
+
+                Road damage such as potholes and cracks develops because of heavy traffic,
+                water seepage, poor construction quality, and changing weather conditions.
+                Undetected road damage increases the risk of accidents, vehicle damage,
+                traffic congestion, and expensive maintenance. Using AI and computer vision,
+                road damage can be detected automatically from images, making inspection
+                faster, more accurate, and cost-effective.
+
+            </p>
+
+        </section>
+
+        <section class="causes">
+
+            <h2>Common Causes</h2>
+
+            <ul>
+
+                <li>Heavy traffic load</li>
+
+                <li>Rainwater and poor drainage</li>
+
+                <li>Temperature changes</li>
+
+                <li>Poor construction materials</li>
+
+                <li>Lack of maintenance</li>
+
+                <li>Natural wear and tear</li>
+
+            </ul>
+
+        </section>
+
+    </div>
+
+    <!-- PREDICTION PAGE -->
+
+    <div id="predictionPage">
+
+        <nav>
+
+            <h1>Road Damage Detection</h1>
+
+            <button onclick="goHome()">
+                Home
+            </button>
+
+        </nav>
+
+        <div class="predictContainer">
+
+            <div class="backBtn">
+
+                <button onclick="goHome()">
+                    ⬅ Back
+                </button>
+
+            </div>
+
+            <div class="uploadSection">
+
+                <h2>Select Image</h2>
+
+                <br>
+
+                <input type="file" id="imageInput" placeholder="Select a image file">
+            </div>
+
+            <div class="imageSection">
+
+                <div>
+
+                    <h3 style="text-align:center;">Original Image</h3>
+
+                    <br>
+
+                    <div class="box">
+
+                        <img id="preview">
+
+                    </div>
+
+                </div>
+
+                <div class="centerButtons">
+
+                    <button id="predictBtn">
+
+                        Show Predict
+
+                    </button>
+
+                    <button id="downloadBtn">
+
+                        Download
+
+                    </button>
+
+                </div>
+
+                <div>
+
+                    <h3 style="text-align:center;">Prediction</h3>
+
+                    <br>
+
+                    <div class="box">
+
+                        <img id="result">
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- JavaScript will be added in Part 2 -->
+    <script>
+
+        // Variables
+
+        let selectedFile = null;
+
+        const imageInput = document.getElementById("imageInput");
+        const preview = document.getElementById("preview");
+        const result = document.getElementById("result");
+
+
+        // Open Prediction Page
+
+        function openPrediction() {
+
+            document.getElementById("homePage").style.display = "none";
+            document.getElementById("predictionPage").style.display = "block";
+
+        }
+
+
+        // Back To Home
+
+        function goHome() {
+
+            document.getElementById("predictionPage").style.display = "none";
+            document.getElementById("homePage").style.display = "block";
+
+        }
+
+
+        // Upload Image
+
+        imageInput.addEventListener("change", async function () {
+
+            selectedFile = this.files[0];
+
+            if (selectedFile == null) {
+                return;
+            }
+
+            // Show selected image
+
+            preview.src = URL.createObjectURL(selectedFile);
+
+
+            // Create FormData
+
+            let formData = new FormData();
+
+            formData.append("file", selectedFile);
+
+
+            try {
+
+                const response = await fetch(
+                    "http://127.0.0.1:8000/upload-image",
+                    {
+                        method: "POST",
+                        body: formData
+                    }
+                );
+
+                const data = await response.json();
+
+                alert(data.message);
+
+            }
+
+            catch (error) {
+
+                alert("Upload Failed");
+
+                console.log(error);
+
+            }
+
+        });
+
+        // Predict Image
+
+        document.getElementById("predictBtn").addEventListener("click", async function () {
+
+            if (selectedFile == null) {
+
+                alert("Please Upload an Image");
+
+                return;
+
+            }
+
+            try {
+
+                const response = await fetch(
+
+                    "http://127.0.0.1:8000/predict?filename=" + selectedFile.name,
+
+                    {
+
+                        method: "POST"
+
+                    }
+
+                );
+
+                const data = await response.json();
+
+                alert(data.message);
+
+                // Show prediction image
+
+                result.src =
+                    "http://127.0.0.1:8000/show-image?filename=" + selectedFile.name +
+                    "&t=" + new Date().getTime();
+
+            }
+
+            catch (error) {
+
+                alert("Prediction Failed");
+
+                console.log(error);
+
+            }
+
+        });
+
+
+        // Download Image
+
+        document.getElementById("downloadBtn").addEventListener("click", function () {
+
+            if (selectedFile == null) {
+
+                alert("No Image Found");
+
+                return;
+
+            }
+
+            window.location.href =
+                "http://127.0.0.1:8000/output?filename=" + selectedFile.name;
+
+        });
+
+    </script>
+</body>
+
+</html>

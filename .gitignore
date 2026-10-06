@@ -1,0 +1,69 @@
+# Python
+__pycache__/
+*.py[cod]
+
+# Virtual environments
+venv/
+env/
+.venv/
+ml_env/
+
+# VS Code
+.vscode/
+
+# Dataset
+images/
+labels/
+labels-YOLO/
+RoadDataset/
+annotations_coco.json
+
+# YOLO training results
+runs/
+
+# Backend generated files
+backend/Uploads/
+backend/uploads/
+backend/outputs/
+backend/Outputs/
+
+# Report and presentation
+report/
+presentation/
+
+# Model weights
+*.pt
+*.pth
+*.onnx
+*.h5
+*.keras
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Environment variables
+.env
+
+# Logs
+*.log
+
+# OS files
+Thumbs.db
+.DS_Store
+# Demo/test files - keep locally
+2.jpg
+3.jpg
+4.jpg
+5.jpg
+6.jpg
+7.jpg
+images.jpg
+juet_logo.jpg
+road.mp4
+
+# Requirements - keep local
+requirements.txt
+
+# Report and presentation
+report.zip
+presentation.zip

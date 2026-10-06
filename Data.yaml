@@ -1,0 +1,9 @@
+train: RoadDataset/train/images
+val: RoadDataset/valid/images
+
+nc: 3
+
+names:
+  0: pothole
+  1: crack
+  2: manhole
